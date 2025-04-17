@@ -1,54 +1,46 @@
-import Image from "next/image";
+"use client"
 
-import IMG_6654 from "@/../public/IMG_6654.jpg";
+import Image from "next/image";
+import 頭像 from "@/../public/頭像.jpg";
+import HeartImg from "@/../public/heart.png"
+import { useState } from "react";
+
 
 export default function Home() {
+
+  const [heart, setHeart] = useState(0);
+
+  const addHeart = function(){
+    
+    setHeart(heart+1);
+
+  }
+
   return (
-    <div className="w-full h-screen bg-gray-200 flex justify-center items-center"> 
-
-      <div className="w-[600px] h-[90vh] rounded-2xl bg-white flex justify-start 
-       items-center flex-col p-[30px] pt-[80px] overflow-y-auto">
-
-        <Image src={IMG_6654} alt="avatar" className="w-[80px] h-[80px] rounded-full" />
-        <h1 className="mt-2">謝雨彤</h1>
-        <p className="max-w-[380px] text-center">
-          廣電三，興趣攝影繪畫，MBTI是INTP。
-        </p>
-        
-        {/* 社群連結 */}
-        <div className="flex gap-2 my-5">
-          <a href="https://www.instagram.com/_ytng.o5p/" target="_blank" rel="noopener noreferrer">
-            <div className="bg-gray-300 w-[40px] h-[40px] rounded-full"></div>
-          </a>
-          <a href="https://www.instagram.com/_ytng.o5p/" target="_blank" rel="noopener noreferrer">
-            <div className="bg-gray-300 w-[40px] h-[40px] rounded-full"></div>
-          </a>
-          <a href="https://www.instagram.com/_ytng.o5p/" target="_blank" rel="noopener noreferrer">
-            <div className="bg-gray-300 w-[40px] h-[40px] rounded-full"></div>
-          </a>
-          <a href="https://www.instagram.com/_ytng.o5p/" target="_blank" rel="noopener noreferrer">
-            <div className="bg-gray-300 w-[40px] h-[40px] rounded-full"></div>
-          </a>
-          <a href="https://www.instagram.com/_ytng.o5p/" target="_blank" rel="noopener noreferrer">
-            <div className="bg-gray-300 w-[40px] h-[40px] rounded-full"></div>
-          </a>
-        </div>
-
-        {/* 頁面切換 */}
-        <div className="w-full flex flex-col gap-2">
-          <div className="w-full h-[84px] bg-gray-300 rounded-2xl">學經歷</div>
-          <div className="w-full h-[84px] bg-gray-300 rounded-2xl">作品分類一</div>
-          <div className="w-full h-[84px] bg-gray-300 rounded-2xl">作品分類二</div>
-          <div className="w-full h-[84px] bg-gray-300 rounded-2xl">作品分類三</div>
-          <div className="w-full h-[84px] bg-gray-300 rounded-2xl">作品分類一</div>
-          <div className="w-full h-[84px] bg-gray-300 rounded-2xl">作品分類二</div>
-          <div className="w-full h-[84px] bg-gray-300 rounded-2xl">作品分類三</div>
-          <div className="w-full h-[84px] bg-gray-300 rounded-2xl">作品分類一</div>
-        
-        </div>
-
+    <div className="flex w-full h-full justify-center items-center rounded-2xl relative overflow-hidden">
+      <Image 
+        src="/untitled-5784.jpg" 
+        alt="背景" 
+        fill 
+        className="object-cover object-bottom"
+        priority
+      />
+      
+      <div className="absolute top-8 left-8 right-8 z-10 text-gray-600 text-base leading-relaxed space-y-0.5">
+        <p className="text-xl ">雨桐，二十一歲。</p>
+        <p>對於沒有接觸過的領域，比起下意識地抗拒，往往會積極地進行嘗試，具有豐富的實驗精神且熱愛冒險。</p>
+        <p>喜歡需要創意和創新的工作，不願意被侷限在框架和條例中。</p>
+        <p>行事乾脆利落，思維邏輯理性，善於利用小聰明。</p>
+        <p>對自己有所要求，清楚目標之後會不顧一切奮力追求，但偶爾不小心會陷入完美主義的漩渦。</p>
       </div>
-
+      
+      <div className="cursor-pointer flex flex-col justify-center items-center z-10"
+        onClick={addHeart}
+      >
+        <Image src={頭像} className="w-[68px] h-[68px] rounded-full" alt="photo" />
+        <div className="text-2xl text-gray-700 mt-2"> { heart } </div>
+      </div>
+      
     </div>
   );
 }
