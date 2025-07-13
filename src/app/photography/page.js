@@ -1,145 +1,215 @@
-import Image from "next/image";
+'use client';
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import { useAutoScroll } from '../../hooks/useAutoScroll';
 
-export default function CatePainting() {
+export default function Photography() {
+  const [currentImageIndex1, setCurrentImageIndex1] = useState(0);
+  const [currentImageIndex2, setCurrentImageIndex2] = useState(0);
+  const images1 = ['1.png', '2.png', '3.png', '4.png', '5.png', '6.png'];
+  const images2 = ['1.png', '2.png', '3.png', '4.png', '5.png', '6.png'];
+  
+  // 自動滾動效果
+  const containerRef = useAutoScroll(800);
+
+  // 自動輪播 - 第一個作品
+  useEffect(() => {
+    const interval1 = setInterval(() => {
+      setCurrentImageIndex1((prevIndex) => (prevIndex + 1) % images1.length);
+    }, 3000);
+
+    return () => clearInterval(interval1);
+  }, [images1.length]);
+
+  // 自動輪播 - 第二個作品
+  useEffect(() => {
+    const interval2 = setInterval(() => {
+      setCurrentImageIndex2((prevIndex) => (prevIndex + 1) % images2.length);
+    }, 3000);
+
+    return () => clearInterval(interval2);
+  }, [images2.length]);
+
+  // 處理第一個按鈕點擊
+  const handleWatchClick1 = () => {
+    window.open('https://www.bilibili.com/video/BV1zj411L7bF/', '_blank');
+  };
+
+  // 處理第二個按鈕點擊
+  const handleWatchClick2 = () => {
+    window.open('https://www.instagram.com/reel/C58SaXuSIx0/?utm_source=ig_web_copy_link&igsh=anF4dHQ2d2oxdzVy', '_blank');
+  };
+
+  // 處理第四個按鈕點擊
+  const handleWatchClick4 = () => {
+    window.open('https://www.instagram.com/reel/DIdNYLoT7pH/?utm_source=ig_web_copy_link&igsh=enc0d3p2c3djazRx', '_blank');
+  };
+
   return (
-    <div className="w-full h-full bg-gray-900 flex flex-col justify-start items-center rounded-2xl py-12 px-6 overflow-y-auto">
-      
-      <div className="flex flex-col w-full">
-        <h3 className="mb-2 text-sm md:text-base text-gray-100">
-          金勇影展投展作品
-        </h3>
-        <h1 className="text-xl md:text-2xl font-bold mb-4 text-gray-100">
-          「呱」
-        </h1>
-        <h3 className="mt-4 mb-1 text-sm md:text-base text-gray-100">
-          本片通過一種近乎靜默的荒謬語彙，重構現代人與制度之間的情慾與勞動關係。
-        </h3>
-        <h3 className="mt-1 text-sm md:text-base text-gray-100">
-          我們借鏡30至60年代歐洲喜劇的節奏與形式，導入台灣本土的信仰象徵與儀式語言，進行一次文化解構的輕盈實驗。
-        </h3>
-      </div>
+    <div ref={containerRef} className="w-full h-full overflow-y-auto">
+      {/* 第三個作品 */}
+      <div className="w-full h-full rounded-2xl overflow-hidden relative mb-8">
+        {/* 底層：description3.png */}
+        <div className="w-full h-full relative">
+            <Image 
+            src="/導演作品/3/description3.png"
+            alt="Description"
+              fill 
+            style={{ objectFit: 'cover' }}
+            priority
+            />
+          </div>
+        
+        {/* 上層：YouTube影片 */}
+        <div className="absolute inset-0 w-full h-full z-30 flex items-start justify-center pt-8">
+          <div className="w-1/2 h-1/2">
+            <iframe
+              src="https://www.youtube.com/embed/c34nw9xtC48"
+              title="YouTube video"
+              className="w-full h-full rounded-lg"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
+          </div>
+          </div>
 
-      <div className="flex flex-col w-full gap-4 md:gap-6 mt-4 md:mt-6">
-        {/* 響應式圖片網格 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-4 md:gap-6">
-          <div className="w-full h-0 pb-[75%] rounded-2xl relative overflow-hidden">
+      {/* 第四個作品 */}
+      <div className="w-full h-full rounded-2xl overflow-hidden relative mb-8">
+        {/* description4.png */}
+        <div className="w-full h-full relative">
             <Image 
-              src="/導演作品/1/1.png" 
-              alt="導演作品1" 
+            src="/導演作品/description4.png"
+            alt="Description"
               fill 
-              className="object-cover"
+            style={{ objectFit: 'cover' }}
+            priority
             />
           </div>
-          <div className="w-full h-0 pb-[75%] rounded-2xl relative overflow-hidden">
+        
+        {/* btn_watch 按鈕 - 位置在右邊下方 */}
+        <div className="absolute bottom-40 right-12 z-40">
+          <button
+            onClick={handleWatchClick4}
+            className="transition-all duration-300 transform hover:scale-105"
+          >
             <Image 
-              src="/導演作品/1/2.png" 
-              alt="導演作品2" 
-              fill 
-              className="object-cover"
+              src="/導演作品/btn_watch.png"
+              alt="Watch Video"
+              width={200}
+              height={20}
+              className="drop-shadow-lg"
             />
-          </div>
-          <div className="w-full h-0 pb-[75%] rounded-2xl relative overflow-hidden">
-            <Image 
-              src="/導演作品/1/3.png" 
-              alt="導演作品3" 
-              fill 
-              className="object-cover"
-            />
-          </div>
-          <div className="w-full h-0 pb-[75%] rounded-2xl relative overflow-hidden">
-            <Image 
-              src="/導演作品/1/4.png" 
-              alt="導演作品4" 
-              fill 
-              className="object-cover"
-            />
-          </div>
-          <div className="w-full h-0 pb-[75%] rounded-2xl relative overflow-hidden">
-            <Image 
-              src="/導演作品/1/5.png" 
-              alt="導演作品5" 
-              fill 
-              className="object-cover"
-            />
-          </div>
-          <div className="w-full h-0 pb-[75%] rounded-2xl relative overflow-hidden">
-            <Image 
-              src="/導演作品/1/6.png" 
-              alt="導演作品6" 
-              fill 
-              className="object-cover"
-            />
-          </div>
+          </button>
         </div>
       </div>
       
       {/* 第二個作品 */}
-      <div className="flex flex-col w-full mt-8 md:mt-12">
-        <h3 className="mb-2 text-sm md:text-base text-gray-100">
-          第二屆政大電影節宣傳片
-        </h3>
-        <h1 className="text-xl md:text-2xl font-bold mb-4 text-gray-100">
-          「不安主義宣言」
-        </h1>
-        <h3 className="mt-4 mb-1 text-sm md:text-base text-gray-100">
-          電影應勇敢直面人類的困境，並以真實的影像表現出現代生活中的混亂與不安。
-        </h3>
-        <h3 className="mt-1 text-sm md:text-base text-gray-100">
-          拒絕盲目崇拜文明，將不安視為電影的語法，以此宣告電影與人類不安的緊密關係。
-        </h3>
+      <div className="w-full h-full rounded-2xl overflow-hidden relative mb-8">
+        {/* 下層：1.png 到 6.png 輪播（背景） */}
+        <div className="w-full h-full relative">
+          <Image
+            src={`/導演作品/2/${images2[currentImageIndex2]}`}
+            alt={`Image ${currentImageIndex2 + 1}`}
+            fill
+            style={{ objectFit: 'cover' }}
+            priority
+          />
       </div>
 
-      <div className="flex flex-col w-full gap-4 md:gap-6 mt-4 md:mt-6">
-        {/* 響應式圖片網格 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-4 md:gap-6">
-          <div className="w-full h-0 pb-[62.5%] rounded-2xl relative overflow-hidden">
+        {/* 上層：description2.png（疊加在上方） */}
+        <div className="absolute inset-0 w-full h-full">
             <Image 
-              src="/導演作品/2/1.png" 
-              alt="導演作品1" 
+            src="/導演作品/2/description2.png"
+            alt="Description"
               fill 
-              className="object-cover"
+            style={{ objectFit: 'cover' }}
+            priority
             />
           </div>
-          <div className="w-full h-0 pb-[62.5%] rounded-2xl relative overflow-hidden">
+        
+        {/* btn_watch 按鈕 - 位置在右邊下方 */}
+        <div className="absolute bottom-40 right-12 z-40">
+          <button
+            onClick={handleWatchClick2}
+            className="transition-all duration-300 transform hover:scale-105"
+          >
             <Image 
-              src="/導演作品/2/2.png" 
-              alt="導演作品2" 
+              src="/導演作品/btn_watch.png"
+              alt="Watch Video"
+              width={200}
+              height={20}
+              className="drop-shadow-lg"
+            />
+          </button>
+          </div>
+        
+        {/* 輪播指示器 */}
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
+          {images2.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentImageIndex2(index)}
+              className={`w-3 h-3 rounded-full transition-colors duration-200 ${
+                index === currentImageIndex2 ? 'bg-white' : 'bg-white/50'
+              }`}
+            />
+          ))}
+        </div>
+          </div>
+
+      {/* 第一個作品 */}
+      <div className="w-full h-full rounded-2xl overflow-hidden relative">
+        {/* 下層：1.png 到 6.png 輪播（背景） */}
+        <div className="w-full h-full relative">
+            <Image 
+            src={`/導演作品/1/${images1[currentImageIndex1]}`}
+            alt={`Image ${currentImageIndex1 + 1}`}
               fill 
-              className="object-cover"
+            style={{ objectFit: 'cover' }}
+            priority
             />
           </div>
-          <div className="w-full h-0 pb-[62.5%] rounded-2xl relative overflow-hidden">
+        
+        {/* 上層：description1.png（疊加在上方） */}
+        <div className="absolute inset-0 w-full h-full">
             <Image 
-              src="/導演作品/2/3.png" 
-              alt="導演作品3" 
+            src="/導演作品/1/description1.png"
+            alt="Description"
               fill 
-              className="object-cover"
+            style={{ objectFit: 'cover' }}
+            priority
             />
           </div>
-          <div className="w-full h-0 pb-[62.5%] rounded-2xl relative overflow-hidden">
+        
+        {/* btn_watch 按鈕 - 位置在右邊下方 */}
+        <div className="absolute bottom-40 right-12 z-40">
+          <button
+            onClick={handleWatchClick1}
+            className="transition-all duration-300 transform hover:scale-105"
+          >
             <Image 
-              src="/導演作品/2/4.png" 
-              alt="導演作品4" 
-              fill 
-              className="object-cover"
+              src="/導演作品/btn_watch.png"
+              alt="Watch Video"
+              width={200}
+              height={20}
+              className="drop-shadow-lg"
             />
+          </button>
           </div>
-          <div className="w-full h-0 pb-[62.5%] rounded-2xl relative overflow-hidden">
-            <Image 
-              src="/導演作品/2/5.png" 
-              alt="導演作品5" 
-              fill 
-              className="object-cover"
+        
+        {/* 輪播指示器 */}
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
+          {images1.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentImageIndex1(index)}
+              className={`w-3 h-3 rounded-full transition-colors duration-200 ${
+                index === currentImageIndex1 ? 'bg-white' : 'bg-white/50'
+              }`}
             />
-          </div>
-          <div className="w-full h-0 pb-[62.5%] rounded-2xl relative overflow-hidden">
-            <Image 
-              src="/導演作品/2/6.png" 
-              alt="導演作品6" 
-              fill 
-              className="object-cover"
-            />
-          </div>
+          ))}
         </div>
       </div>
     </div>

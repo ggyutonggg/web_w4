@@ -1,8 +1,13 @@
+'use client';
 import Image from "next/image";
+import { useAutoScroll } from '../../hooks/useAutoScroll';
 
 export default function DesignPage() {
+  // 自動滾動效果
+  const containerRef = useAutoScroll(800);
+  
   return (
-    <div className="w-full h-full bg-white flex flex-col justify-start items-center rounded-2xl py-12 px-6 overflow-y-auto">
+    <div ref={containerRef} className="w-full h-full bg-white flex flex-col justify-start items-center rounded-2xl py-12 px-6 overflow-y-auto">
       
       {/* 文字敘述 */}
       <div className="flex flex-col w-full">
