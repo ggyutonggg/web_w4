@@ -3,6 +3,7 @@ import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAutoScroll } from '../hooks/useAutoScroll';
+import CurvedLoop from '../components/CurvedLoop';
 
 export default function Home() {
   const [hide, setHide] = useState(false);
@@ -87,7 +88,7 @@ export default function Home() {
                 style={{ width: '100%', height: 'auto', display: 'block', borderTopLeftRadius: '1rem', borderTopRightRadius: '1rem' }}
                 draggable={false}
               />
-      </div>
+            </div>
             <div className="relative w-full">
               <img
                 src={toggle ? "/about/about_abtme 2.1.png" : "/about/about_abtme 2.2.png"}
@@ -95,17 +96,50 @@ export default function Home() {
                 style={{ width: '100%', height: 'auto', display: 'block' }}
                 draggable={false}
               />
-      </div>
+            </div>
+            
+            {/* 文字跑馬燈 */}
+            <div className="w-full bg-black py-8">
+              <CurvedLoop 
+               marqueeText="OFFER ✦ All-in-One Ability Pack ✦ OFFER ✦ All-in-One Ability Pack ✦ "
+               speed={2}
+               curveAmount={500}
+               direction="right"
+               className="custom-text-style"
+             />
+            </div>
+            
+            {/* about_abt 4.png */}
+            <div className="relative w-full">
+              <img
+                src="/about/about_abt 4.png"
+                alt="about_abt 4"
+                style={{ width: '100%', height: 'auto', display: 'block' }}
+                draggable={false}
+              />
+            </div>
+            
+            {/* 第二個文字跑馬燈 */}
+            <div className="w-full bg-black py-8">
+              <CurvedLoop 
+                marqueeText="OFFER ✦ All-in-One Ability Pack ✦ OFFER ✦ All-in-One Ability Pack ✦ "
+                speed={2}
+                curveAmount={500}
+                direction="right"
+                className="custom-text-style"
+              />
+            </div>
+            
             <div className="relative w-full">
               <img
                 src="/about/about_abtme 3.png"
                 alt="about_abtme 3"
                 style={{ width: '100%', height: 'auto', display: 'block', borderBottomLeftRadius: '1rem', borderBottomRightRadius: '1rem' }}
                 draggable={false}
-        />
-      </div>
+              />
+            </div>
           </div>
-    </div>
+        </div>
       )}
     </>
   );
