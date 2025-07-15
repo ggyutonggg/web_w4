@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
         className={`${notoSansTC.variable} antialiased`}
       >
         
-        <div className="w-screen h-screen overflow-y-auto flex flex-col sm:flex-row gap-5 bg-black p-8">
+        <div className="w-screen h-screen flex flex-col sm:flex-row gap-5 bg-black p-8">
 
           <div className="min-w-[320px] w-full sm:w-[320px] h-full rounded-2xl bg-[#081aff] flex 
           justify-start items-center flex-col p-[30px] pt-[80px] overflow-y-auto overflow-x-hidden">

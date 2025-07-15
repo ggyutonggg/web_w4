@@ -212,6 +212,17 @@ export default function Photography() {
           ))}
         </div>
       </div>
+      {/* others.png 圖片 */}
+      <div className="w-full rounded-2xl overflow-hidden mt-8">
+        <Image 
+          src="/導演作品/others.png"
+          alt="Others"
+          width={1920}
+          height={1080}
+          className="w-full h-auto object-contain"
+          priority
+        />
+      </div>
     </div>
   );
 } 

@@ -10,6 +10,7 @@ export default function Home() {
   const [startBounce, setStartBounce] = useState(false);
   const overlayRef = useRef(null);
   const [toggle, setToggle] = useState(true);
+  const [mounted, setMounted] = useState(false);
   
   // 自動滾動效果
   const containerRef = useAutoScroll(800);
@@ -25,11 +26,7 @@ export default function Home() {
 
   // 只在每個新分頁第一次進入網站時顯示動畫（用 sessionStorage）
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      if (sessionStorage.getItem('hasSeenHomeAnimation')) {
-        setHide(true);
-      }
-    }
+    setMounted(true);
   }, []);
 
   useEffect(() => {
@@ -49,6 +46,8 @@ export default function Home() {
       setStartBounce(true);
     }
   };
+
+  if (!mounted) return null; // 這樣 SSR 跟 client 端就不會不一致
 
   return (
     <>

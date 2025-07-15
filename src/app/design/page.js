@@ -1,234 +1,43 @@
 'use client';
 import Image from "next/image";
 import { useAutoScroll } from '../../hooks/useAutoScroll';
+import CurvedLoop from '../../components/CurvedLoop';
 
 export default function DesignPage() {
-  // 自動滾動效果
-  const containerRef = useAutoScroll(800);
+  // 移除自動滾動，避免一進來不是在頂部
+  // const containerRef = useAutoScroll(800);
   
   return (
-    <div ref={containerRef} className="w-full h-full bg-white flex flex-col justify-start items-center rounded-2xl py-12 px-6 overflow-y-auto">
-      
-      {/* 文字敘述 */}
-      <div className="flex flex-col w-full">
-        <h3 className="mt-4 mb-1 text-sm md:text-base text-gray-700">
-          擅長使用 Photoshop、Illustrator 與 InDesign 等設計軟體，熟悉數位與印刷視覺的轉換與應用。
-        </h3>
-        <h3 className="mt-1 text-sm md:text-base text-gray-700">
-          曾參與多場活動視覺設計，根據不同主題與需求調整風格，兼顧視覺美感與實用性。
-        </h3>
-        <h3 className="mt-1 text-sm md:text-base text-gray-700">
-          設計對我而言不只是美的表達，更是一種溝通與實驗的過程。樂於與不同領域的夥伴合作，從討論中找到視覺語言的新可能。
-        </h3>
+    // 這裡不要 h-full，直接用 flex-1 讓它自動填滿父層高度
+    <div className="flex-1 bg-white flex flex-col justify-center items-center rounded-2xl overflow-y-auto">
+      <div className="w-full bg-black py-8">
+        <CurvedLoop 
+          marqueeText="VISUAL DESIGN ✦ VISUAL DESIGN ✦ VISUAL DESIGN ✦ VISUAL DESIGN ✦"
+          speed={2}
+          curveAmount={500}
+          direction="right"
+          className="custom-text-style"
+        />
       </div>
-
-      {/* 圖標行 */}
-      <div className="flex flex-row justify-between w-full mt-8 md:mt-12">
-        <div className="w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden relative">
-          <Image 
-            src="/about/about icon 2.JPG" 
-            alt="圖標1" 
-            fill 
-            className="object-cover"
-          />
-        </div>
-        <div className="w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden relative">
-          <Image 
-            src="/about/about icon 3.JPG" 
-            alt="圖標2" 
-            fill 
-            className="object-cover"
-          />
-        </div>
-        <div className="w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden relative">
-          <Image 
-            src="/about/about icon 2.JPG" 
-            alt="圖標3" 
-            fill 
-            className="object-cover"
-          />
-        </div>
-        <div className="w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden relative">
-          <Image 
-            src="/about/about icon 3.JPG" 
-            alt="圖標4" 
-            fill 
-            className="object-cover"
-          />
-        </div>
-        <div className="w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden relative">
-          <Image 
-            src="/about/about icon 2.JPG" 
-            alt="圖標5" 
-            fill 
-            className="object-cover"
-          />
-        </div>
-        <div className="w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden relative">
-          <Image 
-            src="/about/about icon 3.JPG" 
-            alt="圖標6" 
-            fill 
-            className="object-cover"
-          />
-        </div>
-        <div className="w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden relative">
-          <Image 
-            src="/about/about icon 2.JPG" 
-            alt="圖標7" 
-            fill 
-            className="object-cover"
-          />
-        </div>
-        <div className="w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden relative">
-          <Image 
-            src="/about/about icon 3.JPG" 
-            alt="圖標8" 
-            fill 
-            className="object-cover"
-          />
-        </div>
+      <div className="flex flex-col items-center w-full">
+        <Image src="/設計作品/design_intro.png" alt="design_intro" width={1200} height={800} style={{objectFit:'cover', width:'100%', height:'auto', margin:0, padding:0}} />
+        <Image src="/設計作品/design_1.png" alt="design_1" width={1200} height={800} style={{objectFit:'cover', width:'100%', height:'auto', margin:0, padding:0}} />
+        <Image src="/計設作品/design_2.png" alt="design_2" width={1200} height={800} style={{objectFit:'cover', width:'100%', height:'auto', margin:0, padding:0}} />
+        <Image src="/設計作品/design_3.png" alt="design_3" width={1200} height={800} style={{objectFit:'cover', width:'100%', height:'auto', margin:0, padding:0}} />
+        <Image src="/設計作品/design_4.png" alt="design_4" width={1200} height={800} style={{objectFit:'cover', width:'100%', height:'auto', margin:0, padding:0}} />
+        <Image src="/設計作品/design_5.png" alt="design_5" width={1200} height={800} style={{objectFit:'cover', width:'100%', height:'auto', margin:0, padding:0}} />
+        <Image src="/設計作品/design_6.png" alt="design_6" width={1200} height={800} style={{objectFit:'cover', width:'100%', height:'auto', margin:0, padding:0}} />
+        <Image src="/設計作品/design_7.png" alt="design_7" width={1200} height={800} style={{objectFit:'cover', width:'100%', height:'auto', margin:0, padding:0}} />
+        <Image src="/設計作品/design_8.png" alt="design_8" width={1200} height={800} style={{objectFit:'cover', width:'100%', height:'auto', margin:0, padding:0}} />
       </div>
-
-      {/* 設計作品圖片 - 一排一個圖片，調整高度 */}
-      <div className="flex flex-col w-full mt-8 md:mt-12">
-        {/* 第一張圖片 */}
-        <div className="w-full h-0 pb-[50%] relative">
-          <Image 
-            src="/設計作品/Screenshot 2025-04-13 at 4.30.01 PM.png" 
-            alt="設計作品1" 
-            fill 
-            className="object-contain"
-          />
-        </div>
-        
-        {/* 第二張圖片 */}
-        <div className="w-full h-0 pb-[50%] relative">
-          <Image 
-            src="/設計作品/Screenshot 2025-04-13 at 4.30.10 PM.png" 
-            alt="設計作品2" 
-            fill 
-            className="object-contain"
-          />
-        </div>
-        
-        {/* 第三張圖片 */}
-        <div className="w-full h-0 pb-[50%] relative">
-          <Image 
-            src="/設計作品/Screenshot 2025-04-13 at 4.30.21 PM.png" 
-            alt="設計作品3" 
-            fill 
-            className="object-contain"
-          />
-        </div>
-        
-        {/* 第四張圖片 */}
-        <div className="w-full h-0 pb-[50%] relative">
-          <Image 
-            src="/設計作品/Screenshot 2025-04-13 at 4.30.29 PM.png" 
-            alt="設計作品4" 
-            fill 
-            className="object-contain"
-          />
-        </div>
-        
-        {/* 第五張圖片 */}
-        <div className="w-full h-0 pb-[50%] relative">
-          <Image 
-            src="/設計作品/Screenshot 2025-04-13 at 4.30.55 PM.png" 
-            alt="設計作品5" 
-            fill 
-            className="object-contain"
-          />
-        </div>
-        
-        {/* 第六張圖片 */}
-        <div className="w-full h-0 pb-[50%] relative">
-          <Image 
-            src="/設計作品/Screenshot 2025-04-13 at 4.31.03 PM.png" 
-            alt="設計作品6" 
-            fill 
-            className="object-contain"
-          />
-        </div>
-        
-        {/* 第七張圖片 */}
-        <div className="w-full h-0 pb-[50%] relative">
-          <Image 
-            src="/設計作品/Screenshot 2025-04-13 at 4.31.16 PM.png" 
-            alt="設計作品7" 
-            fill 
-            className="object-contain"
-          />
-        </div>
-      </div>
-
-      {/* 底部圖標行 */}
-      <div className="flex flex-row justify-between w-full mt-8 md:mt-12">
-        <div className="w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden relative">
-          <Image 
-            src="/about/about icon 2.JPG" 
-            alt="圖標1" 
-            fill 
-            className="object-cover"
-          />
-        </div>
-        <div className="w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden relative">
-          <Image 
-            src="/about/about icon 3.JPG" 
-            alt="圖標2" 
-            fill 
-            className="object-cover"
-          />
-        </div>
-        <div className="w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden relative">
-          <Image 
-            src="/about/about icon 2.JPG" 
-            alt="圖標3" 
-            fill 
-            className="object-cover"
-          />
-        </div>
-        <div className="w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden relative">
-          <Image 
-            src="/about/about icon 3.JPG" 
-            alt="圖標4" 
-            fill 
-            className="object-cover"
-          />
-        </div>
-        <div className="w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden relative">
-          <Image 
-            src="/about/about icon 2.JPG" 
-            alt="圖標5" 
-            fill 
-            className="object-cover"
-          />
-        </div>
-        <div className="w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden relative">
-          <Image 
-            src="/about/about icon 3.JPG" 
-            alt="圖標6" 
-            fill 
-            className="object-cover"
-          />
-        </div>
-        <div className="w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden relative">
-          <Image 
-            src="/about/about icon 2.JPG" 
-            alt="圖標7" 
-            fill 
-            className="object-cover"
-          />
-        </div>
-        <div className="w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden relative">
-          <Image 
-            src="/about/about icon 3.JPG" 
-            alt="圖標8" 
-            fill 
-            className="object-cover"
-          />
-        </div>
+      <div className="w-full bg-black py-8">
+        <CurvedLoop 
+          marqueeText="VISUAL DESIGN ✦ VISUAL DESIGN ✦ VISUAL DESIGN ✦ VISUAL DESIGN ✦"
+          speed={2}
+          curveAmount={500}
+          direction="right"
+          className="custom-text-style"
+        />
       </div>
     </div>
   );
