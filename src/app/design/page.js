@@ -25,7 +25,7 @@ export default function DesignPage() {
       </div>
       
       <Image src="/設計作品/design_intro.png" alt="design_intro" width={1200} height={800} style={{objectFit:'cover', width:'100%', height:'auto', margin:0, padding:0}} />
-      <Image src="/計設作品/design_1.png" alt="design_1" width={1200} height={800} style={{objectFit:'cover', width:'100%', height:'auto', margin:0, padding:0}} />
+      <Image src="/設計作品/design_1.png" alt="design_1" width={1200} height={800} style={{objectFit:'cover', width:'100%', height:'auto', margin:0, padding:0}} />
       <Image src="/設計作品/design_2.png" alt="design_2" width={1200} height={800} style={{objectFit:'cover', width:'100%', height:'auto', margin:0, padding:0}} />
         {/* 影片區塊：四個 200x200 並排自動播放影片，只在 client 端渲染 */}
         {isClient && (
