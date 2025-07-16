@@ -7,7 +7,7 @@ export default function Coding() {
   const containerRef = useAutoScroll(800);
   
   return (
-    <div ref={containerRef} className="w-full h-full bg-black text-white p-8 overflow-y-auto">
+    <div ref={containerRef} className="w-full h-full overflow-y-auto">
       {/* CurvedLoop component at the top */}
       <div className="mb-8">
         <CurvedLoop 
