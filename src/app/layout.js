@@ -10,7 +10,7 @@ const notoSansTC = Noto_Sans_TC({
 });
 
 export const metadata = {
-  title: "謝雨彤PORTFOLIO",
+  title: "ggyutonggg_portfolio",
   description: "便宜好用勞力，你值得擁有！",
 };
 
@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/頭像.jpg" />
       </head>
       <body
         className={`${notoSansTC.variable} antialiased`}
